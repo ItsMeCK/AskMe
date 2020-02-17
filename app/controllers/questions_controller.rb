@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  layout "application"
 
   # GET /questions
   # GET /questions.json
@@ -10,9 +11,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @answers = {}
-    @question.answers.eager_load(:comments).each {|answer| @answers[answer] = answer.comments } 
-    puts @answers
+    @answers = @question.answers#.eager_load(:comments).each {|answer| @answers[answer] = answer.comments }
     @answer = @question.answers.build
   end
 

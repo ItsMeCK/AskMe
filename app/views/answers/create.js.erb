@@ -1,0 +1,5 @@
+<% if @answer.parent%>
+  $(".replyToAnswer").html("<%= j nested_answers(@answer) %>");
+<% else %>
+  $(".replyBlack").append("<%= j nested_answers(@answer) %>");
+<% end %>

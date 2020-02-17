@@ -1,7 +1,12 @@
 <div>
     <strong><%= answer.answer_text %></strong>
     <br>
-    <p><%= answer.answer_text %></p>
-    <p><%= link_to 'Reply', new_answer_path(:comment_id => answer) %> |
-    <%= link_to 'Delete', answer_path(answer), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <p> <%= "...By  #{answer.user.email}" %> </p>
+    <% if current_user %>
+	    <p><%= link_to 'Reply', new_answer_path(:comment_id => answer, :parent_id => answer, question_id: answer.question) %> 
+		<% if current_user.id == answer.user.id%>|
+	    	<%= link_to 'Delete', answer_path(answer), method: :delete, data: { confirm: 'Are you sure?' } %> 
+	    <% end %>
+	    </p>
+    <% end %>
 </div>
