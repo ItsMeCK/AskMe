@@ -1,5 +1,5 @@
 <% if @answer.parent%>
-  $(".answer<%=@answer.parent.id%>").load("<%= j render partial: 'answer', locals: {answer: @answer} %>");
+  $(".replyToAnswer").html("<%= j nested_answers(@answer) %>");
 <% else %>
-  $(".ReplyBlack").load("<%= j render partial: 'answer', locals: {answer: @answer} %>");
+  $(".replyBlack").append("<%= j nested_answers(@answer) %>");
 <% end %>

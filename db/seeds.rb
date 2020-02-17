@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+user = User.create(email: 'admin@test.com', password: '123456')
+Question.create(question: 'Is this rails application?', user_id: user.id)
+Question.create(question: 'Can we implement threading in RoR?', user_id: user.id)
+Question.create(question: 'Who owns Internet?', user_id: user.id)
+
+
