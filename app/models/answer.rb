@@ -4,4 +4,5 @@ class Answer < ApplicationRecord
                           foreign_key: "comment_id"
 
     belongs_to :answer, class_name: "Answer", optional: true, foreign_key: "comment_id"
+	has_ancestry
 end

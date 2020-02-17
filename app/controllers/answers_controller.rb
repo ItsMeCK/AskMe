@@ -14,7 +14,7 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
-    @answer = Answer.new(question_id: params[:question_id], comment_id: params[:comment_id])
+    @answer = Answer.new(question_id: params[:question_id], comment_id: params[:comment_id], parent_id: params[:parent_id])
   end
 
   # GET /answers/1/edit
@@ -29,7 +29,7 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if @answer.save
         format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
-        format.json { render :show, status: :created, location: @answer }
+        format.js   { render :layout => false }
       else
         format.html { render :new }
         format.json { render json: @answer.errors, status: :unprocessable_entity }
@@ -69,6 +69,6 @@ class AnswersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def answer_params
-      params.require(:answer).permit(:answer_text, :user_id, :question_id, :comment_id)
+      params.require(:answer).permit(:answer_text, :user_id, :question_id, :comment_id, :parent_id)
     end
 end

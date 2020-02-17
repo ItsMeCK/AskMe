@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_14_115751) do
+ActiveRecord::Schema.define(version: 2020_02_17_065021) do
 
   create_table "answers", force: :cascade do |t|
     t.string "answer_text"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2020_02_14_115751) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "comment_id"
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_answers_on_ancestry"
   end
 
   create_table "questions", force: :cascade do |t|

@@ -1,0 +1,5 @@
+<% if @answer.parent%>
+  $(".answer<%=@answer.parent.id%>").load("<%= j render partial: 'answer', locals: {answer: @answer} %>");
+<% else %>
+  $(".ReplyBlack").load("<%= j render partial: 'answer', locals: {answer: @answer} %>");
+<% end %>

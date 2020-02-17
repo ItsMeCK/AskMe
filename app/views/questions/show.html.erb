@@ -11,9 +11,9 @@
 </p>
 
 <h3>Answers</h3>
-
-<%= nested_answers @answers %>
-
+<div class="ReplyBlack">
+<%= nested_answers @answers.arrange(:order => :created_at) %>
+</div>
 <%= render partial: 'answers/form', locals: { answer: @answer } %>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
