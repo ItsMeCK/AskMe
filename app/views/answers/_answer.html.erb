@@ -1,0 +1,7 @@
+<div>
+    <strong><%= answer.answer_text %></strong>
+    <br>
+    <p><%= answer.answer_text %></p>
+    <p><%= link_to 'Reply', new_answer_path(:comment_id => answer) %> |
+    <%= link_to 'Delete', answer_path(answer), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+</div>

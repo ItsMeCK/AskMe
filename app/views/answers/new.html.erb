@@ -1,0 +1,7 @@
+<h1>New Reply</h1>
+
+<%= render @answer.answer if @answer.answer%>
+
+<%= render 'form', answer: @answer %>
+
+<%= link_to 'Back', answers_path %>
