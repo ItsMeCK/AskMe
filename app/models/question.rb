@@ -14,4 +14,12 @@ class Question < ApplicationRecord
     	Rails.cache.delete 'all_questions'
 	end
 
+	def self.search(search)
+	  if search
+	    self.where("question like ?", "%#{search}%")
+	  else
+	    self.all
+	  end
+	end
+
 end
