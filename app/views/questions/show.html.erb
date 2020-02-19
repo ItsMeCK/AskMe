@@ -1,14 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<p id="notice"><%= notice %></p>
+</div>
+<div class="row"> 
+	<p>
+	  <strong>Question:</strong>
+	  <%= @question.question %>
+	</p>
 
-<p>
-  <strong>Question:</strong>
-  <%= @question.question %>
-</p>
+	<p>
+	  <%= "By ... #{@question.user.email} "%>
+	</p>
+	<br>
+</div>
+<div class="row"> 	
 
-<p>
-  <%= "By ... #{@question.user.email} "%>
-</p>
-<br>
 <h3>Answers</h3>
 <div class="replyBlack">
   <%= nested_answers @answers.arrange(:order => :created_at) %>
@@ -21,3 +26,4 @@
 		<%= link_to 'Edit', edit_question_path(@question) %>
 	<% end %>
 <% end %>
+</div>
