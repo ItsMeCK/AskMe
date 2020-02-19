@@ -3,12 +3,13 @@
 </div>
 <div class="row"> 
 	<p>
-	  <strong>Question:</strong>
-	  <%= @question.question %>
+	  <strong>Question:
+	  	<%= @question.question %>
+	  </strong>
 	</p>
 
 	<p>
-	  <%= "By ... #{@question.user.email} "%>
+	  <%= "By ... #{@question.user.email} #{@question.created_at.strftime("%FT%T")}"%>
 	</p>
 	<br>
 </div>

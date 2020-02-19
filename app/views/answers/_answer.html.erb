@@ -1,7 +1,7 @@
 <div>
     <strong><%= answer.answer_text %></strong>
     <br>
-    <p> <%= "...By  #{answer.user.email}" %> </p>
+    <p> <%= "...By  #{answer.user.email} #{answer.created_at.strftime("%FT%T")}" %> </p>
     <% if current_user %>
 	    <p><%= link_to 'Reply', new_answer_path(:comment_id => answer, :parent_id => answer, question_id: answer.question) %> 
 		<% if current_user.id == answer.user.id%>|
