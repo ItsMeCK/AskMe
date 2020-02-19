@@ -8,11 +8,12 @@
 <p>
   <%= "By ... #{@question.user.email} "%>
 </p>
-
+<br>
 <h3>Answers</h3>
 <div class="replyBlack">
   <%= nested_answers @answers.arrange(:order => :created_at) %>
 </div>
+<br>
 
 <% if current_user %>
 	<%= render partial: 'answers/form', locals: { answer: @answer } %> 
