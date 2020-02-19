@@ -16,7 +16,7 @@ class Question < ApplicationRecord
 
 	def self.search(search)
 	  if search
-	    self.where("question like ?", "%#{search}%")
+	    self.where("lower(question) like ?", "%#{search.downcase}%")
 	  else
 	    self.all
 	  end
