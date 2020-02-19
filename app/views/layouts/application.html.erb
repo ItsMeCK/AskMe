@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>AskMe</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+<title>AskMe</title>
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
-    <div id="main-container" class="container">
-      <div class="row">
-      <div class="col-xs-8">
-        <p class="alert alert-success"><%= "Ask Me Anything" %></p>
-      </div>
-      <div class="col-xs-4">
-        <% if notice %>
-            <p class="alert alert-success"><%= notice %></p>
-            <% end %>
-            <% if alert %>
-              <p class="alert alert-danger"><%= alert %></p>
-            <% end %>
-            <p class="navbar-text float-right">
-            <% if user_signed_in? %>
-              Logged in as <strong><%= current_user.email %></strong>.
-              <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-            <% else %>
-              <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-              <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-            <% end %>
-            </p>
-      </div>
-      </div>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+      <li class="nav-item">
+        <%=  link_to "Ask Me Anything HOME", new_user_registration_path, :class => 'nav-link'%>
+      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to current_user.email, edit_user_registration_path, :class => 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-warning'  %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link'  %> 
+        </li>
+        <li class="nav-item">  
+          <%= link_to "Login", new_user_session_path, :class => 'nav-link'  %>
+        </li>
+      <% end %>
+    </ul>
 
-
-      <div class="row">
-          <%= yield %>        
-      </div>
+   <div class="form-inline float-right">
+     <%= form_tag root_path, :method => 'get' do %>
+      <p>
+        <%= text_field_tag :search, params[:search], :class => "form-control mr-sm-2" %>
+        <%= submit_tag "Search", :name => nil, :class => 'btn btn-success' %>
+      </p>
+      <% end %>
     </div>
 
+</nav>
+<br>
 
-  </body>
+<div class="row">
+  <%= yield %>        
+</div>
+
+</body>
 </html>
